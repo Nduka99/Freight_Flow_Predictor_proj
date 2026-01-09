@@ -30,5 +30,12 @@ data/processed/*
 models/*
 !models/.gitkeep
 
+
 # Render/Cloud artifacts
 .ipynb_checkpoints/
+
+# Project Management & Internal Scripts
+scripts/
+tests/
+implementation_plan*.md
+domain_knowledge.md
