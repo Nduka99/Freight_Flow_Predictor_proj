@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.logistics/
+.env
+.ipynb_checkpoints/
+data/raw/
+data/processed/
+.git/
+.vscode/

@@ -1,0 +1,31 @@
+services:
+  # Backend Service (FastAPI)
+  - type: web
+    name: freight-flow-api
+    env: docker
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    plan: free
+    branch: main
+    envVars:
+      - key: PORT
+        value: 8000
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+
+  # Frontend Service (Streamlit)
+  - type: web
+    name: freight-flow-dashboard
+    env: docker
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    plan: free
+    branch: main
+    envVars:
+      - key: PORT
+        value: 8501
+      - key: API_URL
+        fromService:
+          type: web
+          name: freight-flow-api
+          property: url
+    startCommand: streamlit run frontend/app.py --server.port 8501 --server.address 0.0.0.0
