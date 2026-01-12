@@ -1,52 +1,52 @@
-# --- Core Data & Math ---
+# ==========================================
+# 1. Core Data & UK Government File Support
+# ==========================================
 pandas>=2.1.0           # Dataframes
-numpy>=1.26.0           # Math operations
+numpy>=1.26.0           # Math
+odfpy>=1.4.1            # REQUIRED: Reads DfT .ods files
+openpyxl>=3.1.2         # REQUIRED: Reads DfT .xlsx files
 
-# --- UK Government Data Support ---
-odfpy>=1.4.1            # REQUIRED for DfT .ods files
-openpyxl>=3.1.2         # REQUIRED for DfT .xlsx files
+# ==========================================
+# 2. The Gradient Boosting Stack (Your Models)
+# ==========================================
+scikit-learn>=1.3.0     # Preprocessing, Splitting, Metrics
+xgboost>=2.0.0          # Model A: The Standard
+lightgbm>=4.1.0         # Model B: The Speed King (Microsoft)
 
-# --- Machine Learning & Forecasting ---
-scikit-learn>=1.3.0     # Metric & Preprocessing
-xgboost>=2.0.0          # The main regression model
-statsmodels>=0.14.0     # For generic time-series (ARIMA)
-prophet>=1.1.5          # For seasonality/holiday handling
+# ==========================================
+# 3. EDA & Time Series Decomposition
+# ==========================================
+statsmodels>=0.14.0     # Required for STL Decomposition (Trend/Seasonality analysis)
 
-# --- Advanced Deep Learning Forecasting (SOTA) ---
-torch>=2.1.0            # Deep Learning Backend
-# neuralforecast>=1.6.4 # (Skipped: Depends on 'ray', incompatible with Py3.13)
-# pytorch-lightning>=2.1.0
-
-# --- Topological Data Analysis (TDA) ---
-# giotto-tda>=0.6.0       # (Skipped: No Python 3.13 wheels available yet)
-# kmapper>=2.0.1        # Alternative Mapper (Optional, giotto is more robust)
-
-# --- Clustering & XAI ---
-# hdbscan>=0.8.33       # (Using sklearn.cluster.HDBSCAN instead)
-shap>=0.44.0            # Explainable AI
-mapie>=0.8.0            # Conformal Prediction (Uncertainty Quantification)
-
-# --- Data Visualization ---
-matplotlib>=3.8.0       
+# ==========================================
+# 4. Data Visualization & Explainability
+# ==========================================
+matplotlib>=3.8.0
 seaborn>=0.13.0
-plotly>=5.18.0          # Interactive maps for the frontend
+plotly>=5.18.0          # Interactive Maps for the Dashboard
+shap>=0.44.0            # REQUIRED: Best XAI tool for Tree models
 
-# --- Backend API (FastAPI) ---
-fastapi>=0.109.0
-uvicorn[standard]>=0.27.0
-pydantic>=2.5.0
-python-multipart>=0.0.6 # For handling file uploads if needed
+# ==========================================
+# 5. Azure MLOps & Production
+# ==========================================
+gunicorn>=21.2.0        # Production Server for Azure Linux
+azure-storage-blob>=12.19.0 # Load models from Cloud Storage
+azure-identity>=1.15.0      # Secure Cloud Login
+python-dotenv>=1.0.0    # Manage Secrets
 
-# --- Azure Production & MLOps (Crucial) ---
-gunicorn>=21.2.0        # Production server for Azure Linux
-azure-storage-blob>=12.19.0 # To load model.pkl from cloud storage
-azure-identity>=1.15.0      # Secure, passwordless login
+# ==========================================
+# 6. Web Application (Frontend + Backend)
+# ==========================================
+fastapi>=0.109.0        # Backend API
+uvicorn[standard]>=0.27.0 # Dev Server
+pydantic>=2.5.0         # Validation
+streamlit>=1.30.0       # Frontend Dashboard
+requests>=2.31.0        # API Calls (Weather)
+joblib>=1.3.2           # Model Serialization
+httpx>=0.25.0           # Async requests
+tqdm>=4.66.0            # Progress bars
 
-# --- Frontend (Streamlit) ---
-streamlit>=1.30.0
-
-# --- Utilities ---
-joblib>=1.3.2           # Model saving/loading
-python-dotenv>=1.0.0    # Managing API keys/Env vars
-requests>=2.31.0        # For fetching Weather API data
-httpx>=0.25.0           # Async requests (for FastAPI)
+# ==========================================
+# 7. External Data Sources
+# ==========================================
+meteostat>=1.6.5        # REQUIRED: Fixes 'ImportError: Hourly'

@@ -33,6 +33,7 @@ models/*
 
 # Render/Cloud artifacts
 .ipynb_checkpoints/
+notebooks/checkpoints/
 
 # Project Management & Internal Scripts
 scripts/
