@@ -38,5 +38,5 @@ notebooks/checkpoints/
 # Project Management & Internal Scripts
 scripts/
 tests/
-implementation_plan*.md
+*implementation_plan*.md
 domain_knowledge.md
